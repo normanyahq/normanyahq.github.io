@@ -312,15 +312,15 @@ sup {
 
 <p><strong>Getting Start from Documents</strong></p>
 
-<p>The starting point for me is the wiki pages of Peloton. Before joining the group, all I know about database is SQL, the architecture of database, and some details of how the PostgreSQL implements the join operations. </p>
+<p>The starting point for me was the wiki pages of Peloton. Before joining the group, all I knew about database was SQL, the general architecture of database, and some details of how the PostgreSQL implemented the join operations. </p>
 
-<p>After reading through the documents, I learned many basic concepts in the field of Database, such as different types of OLTP, OLAP, different storage architectures to deal with these two different types of transections, and what idea Peloton uses to improve performance on both types queries, which were really helpful in the interviews. In addition to that, I also read paper about the column-based database system Vertica <a href="http://vldb.org/pvldb/vol5/p1790_andrewlamb_vldb2012.pdf">The Vertica Analytic Database: C-Store 7 Years Later</a>. </p>
+<p>After reading through the documents, I learned many basic concepts in the field of Database, such as different types of OLTP, OLAP, different storage architectures to deal with these two different types of transections, and what idea Peloton used to improve performance on both types queries, which were really helpful in the interviews. In addition to that, I also read paper about the column-based database system Vertica <a href="http://vldb.org/pvldb/vol5/p1790_andrewlamb_vldb2012.pdf">The Vertica Analytic Database: C-Store 7 Years Later</a>. </p>
 
 <p><strong>Benchmarking</strong></p>
 
-<p>Then I started to do some benchmarking job, which is easy to start with. I wrote a script to automatically record the benchmarking scores, CPU usage in different circumstance, and visualize the performance. </p>
+<p>Then I started to do some benchmarking job, which was easy to start with. I wrote a script to automatically record the benchmarking scores, CPU usage in different circumstance, and visualized the statistics. </p>
 
-<p>According to the call graph, we found out the bottle-neck to help make decision on the optimization priority of different modules. In my benchmarking job, I found bugs when getting abnormal scores. I learned to use GDB to debug, however the whole project was too large for me and I wasn&#39;t able to figure it out. In the meantime, I had better understanding on how the system was organized, how we reused PostgreSQL to avoid reinventing the wheels.</p>
+<p>With the call graphs, we found out the bottle-neck to help make decision on the optimization priority of different modules. In my benchmarking job, I found bugs when getting abnormal scores. I learned to use GDB to debug, however the whole project was too large for me and I wasn&#39;t able to figure it out. In the meantime, I had better understanding on how the system was organized, how we reused PostgreSQL to avoid reinventing the wheels.</p>
 
 <p><strong>High Concurrent B+ Tree</strong></p>
 
@@ -328,18 +328,18 @@ sup {
 
 <p>However, the first problem I encountered is that the B+ Tree is written in C, which cannot be compiled with C++ compilers, so I migrated into C++ grammar and did some tests with multi-threads to exclude the incorrect versions. </p>
 
-<p>When I integrated the data structure into the system, I found that the existing interfaces were incompatible with our need. So I dug into to source-code to make modifications. The 2000-line source-code lacked documents and was written by an C expert using many fancy techniques, which was impressive but confusing without fully understanding the design. I spent tens of hours on it but didn&#39;t managed to carry out a working version. </p>
+<p>When I integrated the data structure into the system, I found that the existing interfaces were incompatible with our need. So I dug into to source-code to make modifications. The 2000-line source-code lacked documents and was written by a C expert using many fancy techniques, which was impressive but also confusing because I didn&#39;t fully understand the design. I spent tens of hours on it but didn&#39;t managed to carry out a working version. </p>
 
-<p>Although it was not a successful attempt, I learned many useful techniques and designs from reading and debugging the source-code. One of which is the array of size zero, which could simplify the process of memory management. Another is that in the B+ Tree, for the consideration on efficiency and concurrency, it&#39;s unnecessary to delete a leaf-node directly, instead, we can mark the valid bit as zero, which can reduce the operations of node split and merge. </p>
+<p>Although it was not a successful attempt, I learned many useful techniques and designs from reading and debugging the source-code. One of which was the array of size zero, which could simplify the process of memory management. Another was that, in the B+ Tree, for the consideration on efficiency and concurrency, it&#39;s unnecessary to delete a leaf-node directly, instead, we could mark the valid bit as zero, which can reduce the operations of node split and merge. </p>
 
 <p><strong>STX B+ Tree</strong></p>
 
-<p>Failing to modify the complicated concurrent B+ Tree, I tried to add simple latching to a B+ Tree structure, <a href="https://panthema.net/2007/stx-btree/">STX B+ Tree</a>. The source code is extremely clear, which can be written into textbook. </p>
+<p>Failing to modify the complicated concurrent B+ Tree, I tried to add simple latching to a B+ Tree structure, <a href="https://panthema.net/2007/stx-btree/">STX B+ Tree</a>. Even though the length is about 4000 lines, the source code is extremely clear, which can be written into textbook. </p>
 
-<p>The simple latching was really simple and I finished the implementation within about two days, but when I took the interfaces we need in our system into account, many question raises. The data structure is not designed for parallel environments, let alone our secondary index application. </p>
+<p>The simple latching was really simple and I finished the implementation within about two days, but when I took the interfaces we needed in our system into account, many question raised: the data structure is not designed for parallel environments, let alone our secondary index application. </p>
 
 <p>Without consideration on concurrency, the access interface are all based on integrators, so it&#39;s complicated to manage the locks when we are doing range scan or delete. After reading several papers like <a href="http://www.hpl.hp.com/techreports/2010/HPL-2010-9.pdf">A survey of B-tree locking techniques</a> and <a href="http://www.csd.uoc.gr/%7Ehy460/pdf/p650-lehman.pdf">Efficient Locking for Concurrent Operations
-on B-Trees</a> and group discussion, I realized that this is not an trivial, on the contrary, it is still relatively open topic. No wonder there&#39;s few open-source implementations on the web. Hacking this STX B+Tree in a short time turned out to be beyond my ability. But I still learned a lot about the latching strategies, the design of B+ Tree, and the language techniques in C++, for example, the implementation of iterators. </p>
+on B-Trees</a> and group discussion, I realized that this is not a trivial, on the contrary, it was still relatively open topic. No wonder there were few open-source implementations on the web. Hacking this STX B+Tree in a short time turned out to be beyond my ability. But I still learned a lot about the latching strategies, the design of B+ Tree, and the language techniques in C++, for example, the implementation of iterators. </p>
 
 <p><strong>Adding Functionality</strong></p>
 
@@ -348,7 +348,7 @@ on B-Trees</a> and group discussion, I realized that this is not an trivial, on 
 <p><strong>Sum-Up of What I Learned</strong></p>
 
 <ol>
-<li>Bash Script and Development Tools (Zsh, tmux, gdb, sed, git, ...)</li>
+<li>Bash Script and Development Tools (Zsh, tmux, gdb, sed, git, Valgrind, ...)</li>
 <li>Database Concepts</li>
 <li>C/C++ Techniques</li>
 <li>B+ Tree &amp; Latching Design and Implementation</li>
