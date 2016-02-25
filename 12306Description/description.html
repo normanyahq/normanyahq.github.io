@@ -358,6 +358,28 @@ sup {
 <p>Each time when two images appear together, add one to the weight of the edge between them.</p></li>
 </ul>
 
+<h2 id="toc_4">Current Version</h2>
+
+<h2 id="toc_5">New Design</h2>
+
+<p><strong>Distributed Spider</strong></p>
+
+<div><pre><code class="language-none">Repeat
+    1. Get verification code and break into images
+    2. Calculate hash values
+    3. Query all images with same hash values from DB
+    4. Compare current image with the recorded image from DB
+    5. Add weight to Edges into DB
+End</code></pre></div>
+
+<p><strong>Clustering</strong></p>
+
+<p>Set a threshold of weight to eliminate the edges and form clusters.</p>
+
+<p><strong>Databse</strong></p>
+
+<p>Graph database.</p>
+
 
 </body>
 
