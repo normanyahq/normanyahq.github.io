@@ -310,7 +310,7 @@ sup {
 
 <p>12306.cn is the ticketing website for China National Railway. </p>
 
-<p>Since there are 1.2 billion people in China, and railway is the best traveling choice for most people due to low price and convenience, the ticket becomes a kind of scarce resources especially during national vacations, such as Spring Festival: billions of people go home across the country to meet their family.</p>
+<p>Since there are 1.2 billion people in China, and railway is the best traveling choice for most people due to low price and convenience. Thus, the tickets become kind of scarce resources especially during national vacations, such as Spring Festival: billions of people go home across the country to meet their family.</p>
 
 <p>Scalpers could use low latency network and image recognition methods to get the tickets as soon as they were released, and resell for a profit.</p>
 
@@ -358,7 +358,13 @@ sup {
 <p>Each time when two images appear together, add one to the weight of the edge between them.</p></li>
 </ul>
 
-<h2 id="toc_4">Current Version</h2>
+<h2 id="toc_4">Current Design</h2>
+
+<ol>
+<li>Load All image into memory.</li>
+<li>Calculate the hash values, and store them into corresponding buckets.</li>
+<li>Group images for each bucket.</li>
+</ol>
 
 <h2 id="toc_5">New Design</h2>
 
@@ -378,7 +384,7 @@ End</code></pre></div>
 
 <p><strong>Databse</strong></p>
 
-<p>Graph database.</p>
+<p>Graph database.(SQL/NoSQL?)</p>
 
 
 </body>
