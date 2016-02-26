@@ -349,11 +349,16 @@ sup {
 <p>Assume the probabilities for each image getting picked follows uniform distribution, then the number of images&#39; repetitions follows normal distribution, if sample size is larger than the total number of image (Lindeberg Levy Central Limit Theorem).</p>
 
 <p>According to the test result on 800, 000 sub images, most of the images only appeared once. Therefore, the total number of image could be more than 1, 000, 000, or even more.</p></li>
+</ul>
+
+<p><img src="distribution.svg" alt=""></p>
+
+<ul>
 <li><p><strong>Image Correlation</strong></p>
 
 <p>According to observation, images of the same category are more likely to be picked into one verification code, even if they are not in the target category in the verification code. For example, in the first image, the target category is &quot;hanger&quot;, and image 1 and 8 both belong to &quot;wire&quot;. In the second image, the target is &quot;button&quot;, and image 7 and 8 belong to &quot;mosquito coil&quot;.</p>
 
-<p>This are not incidents, since there are about 600 categories, the probability P(6 image are from different categories)=2.5% (similar to Birthday Paradox), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. </p>
+<p>These are not incidents, since there are about 600 categories, the probability P(6 image are from different categories)=2.5% (similar to Birthday Paradox), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. </p>
 
 <p>According to this character, we can do clustering on the image sets by building an undirected graph model: the images are vertices, and the if two images show in one image, there&#39;s an edge between them, and the weight is the number of times that two images show together. </p>
 
