@@ -1,4 +1,4 @@
-12306 Verification Code Recognition
+12306 CAPTCHA Recognition
 ==============
 
 
@@ -10,12 +10,12 @@ Since there are 1.2 billion people in China, and railway is the best traveling c
 
 Scalpers could use low latency network and image recognition methods to get the tickets as soon as they were released, and resell for a profit.
 
-To avoid this, 12306 has established a special kind of verification code to prevent automatic queries from scalpers.
+To avoid this, 12306 has established a special kind of CAPTCHA to prevent automatic queries from scalpers.
 
 Problem Description
 --------------
 
-Two verification codes are shown below:
+Two CAPTCHAs are shown below:
 
 ![](534.jpg) 
 
@@ -36,7 +36,7 @@ Each time it randomly shows 8 images, and ask users to click all the images of a
 Preliminary Study
 ---------
 
-I have downloaded about 100, 000 verification code from the website, which contains 800, 000 sub-images.
+I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 000 sub-images.
 
 - __Total Number of Image__
 
@@ -52,7 +52,7 @@ I have downloaded about 100, 000 verification code from the website, which conta
     
 - __Image Correlation__
 
-    According to observation, images of the same category are more likely to be picked into one verification code, even if they are not in the target category in the verification code. For example, in the first image, the target category is "hanger", and image 1 and 8 both belong to "wire". In the second image, the target is "button", and image 7 and 8 belong to "mosquito coil".
+    According to observation, images of the same category are more likely to be picked into one CAPTCHA, even if they are not in the target category in the CAPTCHA. For example, in the first image, the target category is "hanger", and image 1 and 8 both belong to "wire". In the second image, the target is "button", and image 7 and 8 belong to "mosquito coil".
     
     These are not incidents, since there are about 600 categories, the probability P(6 image are from different categories)=2.5% (similar to Birthday Paradox), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. 
     
@@ -73,7 +73,7 @@ New Design
 __Distributed Spider__
 
     Repeat
-        1. Get verification code and break into images
+        1. Get CAPTCHAs and break into images
         2. Calculate hash values
         3. Query all images with same hash values from DB
         4. Compare current image with the recorded image from DB

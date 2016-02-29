@@ -304,7 +304,7 @@ sup {
 </style>
 </head>
 <body>
-<h1 id="toc_0">12306 Verification Code Recognition</h1>
+<h1 id="toc_0">12306 CAPTCHA Recognition</h1>
 
 <h2 id="toc_1">Background</h2>
 
@@ -314,11 +314,11 @@ sup {
 
 <p>Scalpers could use low latency network and image recognition methods to get the tickets as soon as they were released, and resell for a profit.</p>
 
-<p>To avoid this, 12306 has established a special kind of verification code to prevent automatic queries from scalpers.</p>
+<p>To avoid this, 12306 has established a special kind of CAPTCHA to prevent automatic queries from scalpers.</p>
 
 <h2 id="toc_2">Problem Description</h2>
 
-<p>Two verification codes are shown below:</p>
+<p>Two CAPTCHAs are shown below:</p>
 
 <p><img src="534.jpg" alt=""> </p>
 
@@ -339,7 +339,7 @@ sup {
 
 <h2 id="toc_3">Preliminary Study</h2>
 
-<p>I have downloaded about 100, 000 verification code from the website, which contains 800, 000 sub-images.</p>
+<p>I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 000 sub-images.</p>
 
 <ul>
 <li><p><strong>Total Number of Image</strong></p>
@@ -356,7 +356,7 @@ sup {
 <ul>
 <li><p><strong>Image Correlation</strong></p>
 
-<p>According to observation, images of the same category are more likely to be picked into one verification code, even if they are not in the target category in the verification code. For example, in the first image, the target category is &quot;hanger&quot;, and image 1 and 8 both belong to &quot;wire&quot;. In the second image, the target is &quot;button&quot;, and image 7 and 8 belong to &quot;mosquito coil&quot;.</p>
+<p>According to observation, images of the same category are more likely to be picked into one CAPTCHA, even if they are not in the target category in the CAPTCHA. For example, in the first image, the target category is &quot;hanger&quot;, and image 1 and 8 both belong to &quot;wire&quot;. In the second image, the target is &quot;button&quot;, and image 7 and 8 belong to &quot;mosquito coil&quot;.</p>
 
 <p>These are not incidents, since there are about 600 categories, the probability P(6 image are from different categories)=2.5% (similar to Birthday Paradox), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. </p>
 
@@ -378,7 +378,7 @@ sup {
 <p><strong>Distributed Spider</strong></p>
 
 <div><pre><code class="language-none">Repeat
-    1. Get verification code and break into images
+    1. Get CAPTCHAs and break into images
     2. Calculate hash values
     3. Query all images with same hash values from DB
     4. Compare current image with the recorded image from DB
