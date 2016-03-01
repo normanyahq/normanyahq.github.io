@@ -337,6 +337,8 @@ sup {
 
 <p>Each time it randomly shows 8 images, and ask users to click all the images of a certain category, like &quot;road&quot;, &quot;car&quot;, &quot;potato&quot;, etc.  </p>
 
+<p>The goal is to break the CAPTCHA.</p>
+
 <h2 id="toc_3">Preliminary Study</h2>
 
 <p>I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 000 sub-images.</p>
@@ -365,7 +367,11 @@ sup {
 <p>Each time when two images appear together, add one to the weight of the edge between them.</p></li>
 </ul>
 
-<h2 id="toc_4">Current Design</h2>
+<h2 id="toc_4">Importance</h2>
+
+<p>CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAS, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset </p>
+
+<h2 id="toc_5">Current Design</h2>
 
 <ol>
 <li>Load All image into memory.</li>
@@ -373,7 +379,7 @@ sup {
 <li>Group images for each bucket.</li>
 </ol>
 
-<h2 id="toc_5">New Design</h2>
+<h2 id="toc_6">New Design</h2>
 
 <p><strong>Distributed Spider</strong></p>
 

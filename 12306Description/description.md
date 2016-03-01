@@ -33,6 +33,8 @@ It consists of two parts:
 
 Each time it randomly shows 8 images, and ask users to click all the images of a certain category, like "road", "car", "potato", etc.  
 
+The goal is to break the CAPTCHA.
+
 Preliminary Study
 ---------
 
@@ -60,6 +62,9 @@ I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 
     
     Each time when two images appear together, add one to the weight of the edge between them.
 
+Importance
+-------------
+CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAS, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset 
 
 Current Design
 -----------
