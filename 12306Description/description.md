@@ -12,8 +12,13 @@ Scalpers could use low latency network and image recognition methods to get the 
 
 To avoid this, 12306 has established a special kind of CAPTCHA to prevent automatic queries from scalpers.
 
-Problem Description
+Problem
 --------------
+
+The goal is to break the CAPTCHA by picking out the images of the target category.
+
+
+__Image Description__
 
 Two CAPTCHAs are shown below:
 
@@ -23,17 +28,28 @@ Two CAPTCHAs are shown below:
 
 It consists of two parts:
 
-- __Category Name__
+- Category Name
     
     The Chinese characters after the three highlighted-in-red character "所有的".
     
-- __Images__
+- Images
 
     Eight small images in 2 x 4 cells.
 
 Each time it randomly shows 8 images, and ask users to click all the images of a certain category, like "road", "car", "potato", etc.  
 
-The goal is to break the CAPTCHA.
+__Input__
+
+CAPTCHA.
+
+__Output__
+
+The positions of all target images.
+
+__Constraint__
+
+Running time: 1s
+Accuracy: Over 50%
 
 Preliminary Study
 ---------
@@ -64,7 +80,7 @@ I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 
 
 Importance
 -------------
-CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAS, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset 
+CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAs, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset 
 
 Current Design
 -----------

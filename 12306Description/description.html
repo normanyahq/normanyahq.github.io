@@ -316,7 +316,11 @@ sup {
 
 <p>To avoid this, 12306 has established a special kind of CAPTCHA to prevent automatic queries from scalpers.</p>
 
-<h2 id="toc_2">Problem Description</h2>
+<h2 id="toc_2">Problem</h2>
+
+<p>The goal is to break the CAPTCHA by picking out the images of the target category.</p>
+
+<p><strong>Image Description</strong></p>
 
 <p>Two CAPTCHAs are shown below:</p>
 
@@ -327,17 +331,28 @@ sup {
 <p>It consists of two parts:</p>
 
 <ul>
-<li><p><strong>Category Name</strong></p>
+<li><p>Category Name</p>
 
 <p>The Chinese characters after the three highlighted-in-red character &quot;所有的&quot;.</p></li>
-<li><p><strong>Images</strong></p>
+<li><p>Images</p>
 
 <p>Eight small images in 2 x 4 cells.</p></li>
 </ul>
 
 <p>Each time it randomly shows 8 images, and ask users to click all the images of a certain category, like &quot;road&quot;, &quot;car&quot;, &quot;potato&quot;, etc.  </p>
 
-<p>The goal is to break the CAPTCHA.</p>
+<p><strong>Input</strong></p>
+
+<p>CAPTCHA.</p>
+
+<p><strong>Output</strong></p>
+
+<p>The positions of all target images.</p>
+
+<p><strong>Constraint</strong></p>
+
+<p>Running time: 1s
+Accuracy: Over 50%</p>
 
 <h2 id="toc_3">Preliminary Study</h2>
 
@@ -369,7 +384,7 @@ sup {
 
 <h2 id="toc_4">Importance</h2>
 
-<p>CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAS, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset </p>
+<p>CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAs, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset </p>
 
 <h2 id="toc_5">Current Design</h2>
 
