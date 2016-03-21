@@ -306,6 +306,8 @@ sup {
 <body>
 <h1 id="toc_0">12306 CAPTCHA Recognition</h1>
 
+<p>Heqing Ya, Haonan Sun</p>
+
 <h2 id="toc_1">Background</h2>
 
 <p>12306.cn is the ticketing website for China National Railway. </p>
@@ -318,7 +320,7 @@ sup {
 
 <h2 id="toc_2">Problem</h2>
 
-<p>The goal is to break the CAPTCHA by picking out the images of the target category.</p>
+<p>The goal is to use unsupervised methods to break the CAPTCHA by picking out the images of the target category.</p>
 
 <p><strong>Image Description</strong></p>
 
@@ -351,8 +353,9 @@ sup {
 
 <p><strong>Constraint</strong></p>
 
-<p>Running time: 1s
-Accuracy: Over 50%</p>
+<p>Running time: 1s</p>
+
+<p>Accuracy: Over 50%</p>
 
 <h2 id="toc_3">Preliminary Study</h2>
 
@@ -375,7 +378,7 @@ Accuracy: Over 50%</p>
 
 <p>According to observation, images of the same category are more likely to be picked into one CAPTCHA, even if they are not in the target category in the CAPTCHA. For example, in the first image, the target category is &quot;hanger&quot;, and image 1 and 8 both belong to &quot;wire&quot;. In the second image, the target is &quot;button&quot;, and image 7 and 8 belong to &quot;mosquito coil&quot;.</p>
 
-<p>These are not incidents, since there are about 600 categories, the probability P(6 image are from different categories)=2.5% (similar to Birthday Paradox), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. </p>
+<p>These are not incidents, since there are about 600 categories, the probability P(6 images are all from different categories)=2.5% (similar to Birthday Paradox Problem), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. It is a useful prior for clustering.</p>
 
 <p>According to this character, we can do clustering on the image sets by building an undirected graph model: the images are vertices, and the if two images show in one image, there&#39;s an edge between them, and the weight is the number of times that two images show together. </p>
 
@@ -384,17 +387,37 @@ Accuracy: Over 50%</p>
 
 <h2 id="toc_4">Importance</h2>
 
-<p>CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAs, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset </p>
+<p>CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHAs not only provide ideas on how to produce more reliable CAPTCHAs, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset. In addition, this is also a good programming practice for cloud computing.</p>
 
-<h2 id="toc_5">Current Design</h2>
+<h2 id="toc_5">Algorithm Flow</h2>
+
+<p><strong>Model Construction</strong></p>
 
 <ol>
-<li>Load All image into memory.</li>
-<li>Calculate the hash values, and store them into corresponding buckets.</li>
-<li>Group images for each bucket.</li>
+<li>Estimate the total number of images</li>
+<li>Collect enough CAPTCHAs to construct image-image and image-label graphical models </li>
+<li>Cluster images and labels according to the graph.</li>
 </ol>
 
-<h2 id="toc_6">New Design</h2>
+<p><strong>CAPTCHA Recognition</strong></p>
+
+<ol>
+<li>Match the new CAPTCHA with clustered and labeled images and labels in the database.</li>
+</ol>
+
+<h2 id="toc_6">Plan</h2>
+
+<ol>
+<li>Gathering Data (End of March)</li>
+<li>Construct Graph Clustering Model (End of June)</li>
+<li>Coding (End of July)</li>
+<li>Run Clustering and Parameter Turning (End of August)</li>
+<li>Class-Label OCR (End of September)</li>
+<li>Collect Experiment Data (End of October)</li>
+<li>Writing Report (End of November)</li>
+</ol>
+
+<h2 id="toc_7">System Design</h2>
 
 <p><strong>Distributed Spider</strong></p>
 
@@ -410,7 +433,7 @@ End</code></pre></div>
 
 <p>Set a threshold of weight to eliminate the edges and form clusters.</p>
 
-<p><strong>Databse</strong></p>
+<p><strong>Database</strong></p>
 
 <p>Graph database.(SQL/NoSQL?)</p>
 

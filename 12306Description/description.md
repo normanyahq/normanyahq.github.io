@@ -1,6 +1,7 @@
 12306 CAPTCHA Recognition
 ==============
 
+Heqing Ya, Haonan Sun
 
 Background
 ----------
@@ -15,7 +16,7 @@ To avoid this, 12306 has established a special kind of CAPTCHA to prevent automa
 Problem
 --------------
 
-The goal is to break the CAPTCHA by picking out the images of the target category.
+The goal is to use unsupervised methods to break the CAPTCHA by picking out the images of the target category.
 
 
 __Image Description__
@@ -49,6 +50,7 @@ The positions of all target images.
 __Constraint__
 
 Running time: 1s
+
 Accuracy: Over 50%
 
 Preliminary Study
@@ -72,7 +74,7 @@ I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 
 
     According to observation, images of the same category are more likely to be picked into one CAPTCHA, even if they are not in the target category in the CAPTCHA. For example, in the first image, the target category is "hanger", and image 1 and 8 both belong to "wire". In the second image, the target is "button", and image 7 and 8 belong to "mosquito coil".
     
-    These are not incidents, since there are about 600 categories, the probability P(6 image are from different categories)=2.5% (similar to Birthday Paradox), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. 
+    These are not incidents, since there are about 600 categories, the probability P(6 images are all from different categories)=2.5% (similar to Birthday Paradox Problem), but the real statistic is significantly higher than this. This may be related to the random strategy of the website. It is a useful prior for clustering.
     
     According to this character, we can do clustering on the image sets by building an undirected graph model: the images are vertices, and the if two images show in one image, there's an edge between them, and the weight is the number of times that two images show together. 
     
@@ -80,16 +82,31 @@ I have downloaded about 100, 000 CAPTCHAs from the website, which contains 800, 
 
 Importance
 -------------
-CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHA could not only provide ideas on how to produce more reliable CAPTCHAs, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset 
+CAPTCHA is critical for online systems to avoid brute force attack. Breaking this kind of CAPTCHAs not only provide ideas on how to produce more reliable CAPTCHAs, but also offer some new thoughts on application of computer vision, machine learning, data mining on large dataset. In addition, this is also a good programming practice for cloud computing.
 
-Current Design
------------
+Algorithm Flow
+--------------
+__Model Construction__
 
-1. Load All image into memory.
-2. Calculate the hash values, and store them into corresponding buckets.
-3. Group images for each bucket.
+1. Estimate the total number of images
+2. Collect enough CAPTCHAs to construct image-image and image-label graphical models 
+3. Cluster images and labels according to the graph.
 
-New Design
+__CAPTCHA Recognition__
+
+1. Match the new CAPTCHA with clustered and labeled images and labels in the database.
+
+Plan
+-------------
+1. Gathering Data (End of March)
+2. Construct Graph Clustering Model (End of June)
+3. Coding (End of July)
+4. Run Clustering and Parameter Turning (End of August)
+5. Class-Label OCR (End of September)
+5. Collect Experiment Data (End of October)
+6. Writing Report (End of November)
+
+System Design
 -------
 __Distributed Spider__
 
@@ -105,7 +122,7 @@ __Clustering__
 
 Set a threshold of weight to eliminate the edges and form clusters.
 
-__Databse__
+__Database__
 
 Graph database.(SQL/NoSQL?)
 
