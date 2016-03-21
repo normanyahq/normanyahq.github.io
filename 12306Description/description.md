@@ -29,7 +29,7 @@ Two CAPTCHAs are shown below:
 
 It consists of two parts:
 
-- Category Name
+- Category Label
     
     The Chinese characters after the three highlighted-in-red character "所有的".
     
