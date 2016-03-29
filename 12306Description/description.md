@@ -90,6 +90,7 @@ __Model Construction__
 
 1. Estimate the total number of images
 2. Collect enough CAPTCHAs to construct image-image and image-label graphical models 
+3. Construct graph model with cooccurrence information and features of the images.
 3. Cluster images and labels according to the graph.
 
 __CAPTCHA Recognition__
@@ -98,12 +99,31 @@ __CAPTCHA Recognition__
 
 Plan
 -------------
-1. Gathering Data (End of March)
-2. Construct Graph Clustering Model (End of June)
+1. Gathering Data (End of April)
+    
+    Download 20 million CAPTACHAs to form the dataset. Collect basic statistics of the dataset, including total number of unique images and labels, the (possible) distribution of how the images appear.
+    
+2. Construct Graphical Model and Cluster (End of June)
+
+    According to the cooccurrence information and the image similarity, construct a graph model that describes the closeness among images. Do clustering on this graph model. 
+
 3. Coding (End of July)
-4. Run Clustering and Parameter Turning (End of August)
+
+    Fist, implement a single-thread version that runs on small dataset to validate the correctness and effectiveness.
+    Then, parallelize the algorithm and run it on the whole training set.
+
+4. Run Clustering and Parameter Tuning (End of August)
+
+    Tune parameters based on the performance, and find the best combination of parameters.
+
 5. Class-Label OCR (End of September)
+
+    Class-Labels are twisted Chinese characters in the CAPTCHAs, so we need to convert them into semantic labels, and connect them to the images.
+
 5. Collect Experiment Data (End of October)
+
+    In this stage, we need to run our model on the test set, and get the final result.
+
 6. Writing Report (End of November)
 
 System Design
