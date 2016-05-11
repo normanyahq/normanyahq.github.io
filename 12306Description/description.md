@@ -3,6 +3,9 @@
 
 Heqing Ya, Haonan Sun
 
+Mentors:
+Tai Sing Lee, Christos Faloutsos
+
 Background
 ----------
 12306.cn is the ticketing website for China National Railway. 
@@ -41,7 +44,7 @@ Each time it randomly shows 8 images, and ask users to click all the images of a
 
 __Input__
 
-CAPTCHA.
+CAPTCHA image.
 
 __Output__
 
@@ -144,6 +147,9 @@ Set a threshold of weight to eliminate the edges and form clusters.
 
 __Database__
 
-Graph database.(SQL/NoSQL?)
+Graph database.
 
+Materials
+------
+Slides [Download](Capstone.key)
 
