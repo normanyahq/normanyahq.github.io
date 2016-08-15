@@ -23,7 +23,7 @@ pos2.divide(new Victor(pos_scale, pos_scale));
 pos3.divide(new Victor(pos_scale, pos_scale));
 
 var v1 = new Victor(1 + Math.random()/10, 1 - Math.random()/10);
-var v2 = new Victor(-1 - Math.random()/10, 1 + Math.random()/10);
+var v2 = new Victor(-1 - Math.random()/10, -1 + Math.random()/10);
 v1.normalize();
 v2.normalize();
 //ensure the momentum of the whole system is zero.
