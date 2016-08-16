@@ -2,9 +2,29 @@
     border:0px solid #000000;
     position: absolute;
     top:0px;
-    left:10px;
+    left:0px;
     z-index: -100;
 }
 
 .portrait {
+}
+
+#description {
+  position: absolute;
+  left: 10%;
+}
+
+span.work {
+  font-weight: bold;
+  color: blue;
+}
+
+span.study {
+  font-weight: bold;
+  color: #00FF00;
+}
+
+span.love {
+  font-weight: bold;
+  color: red;
 }

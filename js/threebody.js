@@ -12,7 +12,7 @@ var pos2 = new Victor(0, 1-Math.random()/10);
 var pos3 = new Victor(-1 + Math.random()/10, 0);
 var pos_scale = 10;
 var speed_scale = 50;
-var w = window.innerWidth - 20;
+var w = window.innerWidth;
 var h = window.innerHeight;
 canvas = document.getElementById('threeBodyBox');
 canvas.setAttribute('width', w);
